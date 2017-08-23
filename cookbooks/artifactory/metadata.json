@@ -1,0 +1,45 @@
+{
+  "name": "artifactory",
+  "description": "Installs/Configures artifactory",
+  "long_description": "# artifactory cookbook\nInstalls JFrog's Artifactory\n\n# Requirements\n* Java 7 (java cookbook)\n* ark cookbook\n\n# Usage\nThis cookbook doesn't configure Artifactory since Artifactory was designed primarily for configuration from the UI. It's possible to bootstrap Artifactory's configuration by copying an existing configuration to `$ARTIFACTORY_HOME/etc/artifactory.config.import.xml`. A configuration file can be obtained from a running Artifactory server using curl:\n\n\tcurl -u admin:password -X GET -H 'Accept: application/xml' http://localhost:8081/artifactory/api/system/configuration\n\nRefer to [Artifactory user guide](http://wiki.jfrog.org/confluence/display/RTF/Global+Configuration+Descriptor) for more details\n\nThe default username/password for the server is admin/password\n\n# Attributes\n* `node['artifactory']['home']` - Artifactory home directory. Artifacts are kept here\n* `node['artifactory']['log_dir']` - Artifactory/tomcat logs\n* `node['artifactory']['port']` - Artifactory http port, default is 8081\n* `node['artifactory']['shutdown_port']` - Artifactory http port, default is 8081\n* `node['artifactory']['java']['xmx']` - java Xmx (max heap size)\n* `node['artifactory']['java']['xms']` - java Xms (initial heap size)\n* `node['artifactory']['java']['extra_opts']` - Extra java options, default is '-XX:+UseG1GC'\n* `node['artifactory']['install_java']` - Instruct this cookbook to install Java for you. Default `true`\n\n\n# Recipes\n* artifactory::default - Installs Artifactory\n* artifactory::apache-proxy - Setup Apache reverse proxy in front of Artifactory\n\n# Author\n\n* Author:: Avishai Ish-Shalom (<avishai@fewbytes.com>)\n* Author:: Eric Helgeson (<erichelgeson@gmail.com>)\n",
+  "maintainer": "Agile Orbit",
+  "maintainer_email": "info@agileorbit.com",
+  "license": "Apache V2",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "rhel": ">= 0.0.0"
+  },
+  "dependencies": {
+    "java": ">= 0.0.0",
+    "runit": ">= 0.0.0",
+    "ark": ">= 0.0.0",
+    "apache2": ">= 0.0.0"
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+    "artifactory::default": "Installs Artifactory.",
+    "artifactory::apache-proxy": "Setup Apache reverse proxy in front of Artifactory."
+  },
+  "version": "0.3.1"
+}
